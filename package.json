@@ -1,0 +1,19 @@
+{
+  "name": "leaflet-save",
+  "version": "1.0.0",
+  "description": "A leaflet plugin that provides a hook to save the map state as JSON.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nfurfaro/leaflet-save.git"
+  },
+  "author": "Nick Furfaro",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nfurfaro/leaflet-save/issues"
+  },
+  "homepage": "https://github.com/nfurfaro/leaflet-save#readme"
+}

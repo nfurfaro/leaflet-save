@@ -2,6 +2,9 @@
 A leaflet plugin that provides a hook to save the map state as JSON.
 
 
+[] start by implementing save button, and output state to display box.
+
+
 ```js
 map.save(function (mapState) {
     // post state to an endpoint
@@ -30,3 +33,21 @@ map.save(function (mapState) {
     ]
 }
 ```
+
+// Layers
+
+state = {};
+
+
+state.layers = [];
+map.eachLayer(function (layer) {
+    if (layer instance of L.TileLayer) {
+        var l;
+        l.type = 'TileLayer';
+        l.url = layer.url;
+        l.options = layer.options;
+        layer.push(l);
+    }
+});
+
+return state;
