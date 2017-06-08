@@ -8,12 +8,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nfurfaro/leaflet-save.git"
+    "url": "git+https://github.com/tesera/leaflet-save"
+
   },
   "author": "Nick Furfaro",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/nfurfaro/leaflet-save/issues"
+    "url": "https://github.com/tesera/leaflet-save/issues"
   },
-  "homepage": "https://github.com/nfurfaro/leaflet-save#readme"
+  "homepage": "https://github.com/tesera/leaflet-save#readme"
 }
