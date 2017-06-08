@@ -27,29 +27,30 @@
         'zoom': map.getZoom(),
         'center': map.getCenter(),
         'bounds': map.getBounds(),
-        'layers': [
-          {
-            'type': 'TileLayer|TileLayer.WMS|FeatureGroup',
-            'url': 'http://...',
-            'options': {},
-            'basemap': 'true|false'
-          }
-        ]
+        'layers': []
       }
 
-            // map.eachLayer(function (layer) {
-            //     if (layer instance of L.TileLayer) {
-            //         var l;
-            //         l.type = 'TileLayer';
-            //         l.url = layer.url;
-            //         l.options = layer.options;
-            //         layer.push(l);
-            //     }
-            // });
+      // map.eachLayer(function (layer) {
+      //   console.log(typeof (layer))
+      //   console.log(layer)
+      // })
+
+      state.layers = []
+      map.eachLayer(function (layer) {
+        if (layer instanceof L.TileLayer) {
+          var l = {}
+          l.type = 'TileLayer'
+          l.url = layer.url
+          l.options = layer.options
+          mapState.layers.push(l)
+        }
+      })
+
+      console.log(JSON.stringify(state.layers))
+      console.log(state.layers)
 
       // Print mapState to div here.
-      document.getElementById('state').innerHTML = JSON.stringify(mapState, null, 2)
-      console.log(JSON.stringify(mapState, null, '\t'))
+      document.getElementById('state').innerHTML = JSON.stringify(mapState, null, '\t')
     }
   }
 
