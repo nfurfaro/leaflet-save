@@ -30,9 +30,19 @@
       }
 
       map.eachLayer(function (layer) {
+        var l = {}
         if (layer instanceof L.TileLayer) {
-          var l = {}
           l.type = 'TileLayer'
+          l.url = layer.url
+          l.options = layer.options
+          mapState.layers.push(l)
+        } else if (layer instanceof L.TileLayer.WMS) {
+          l.type = 'TileLayer.wms'
+          l.url = layer.url
+          l.options = layer.options
+          mapState.layers.push(l)
+        } else if (layer instanceof L.FeatureGroup) {
+          l.type = 'FeatureGroup'
           l.url = layer.url
           l.options = layer.options
           mapState.layers.push(l)
