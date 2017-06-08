@@ -60,3 +60,4 @@ typings/
 # Temporary/Reference
 plugins.txt
 notes.txt
+.eslintrc.yml
