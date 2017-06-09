@@ -40,7 +40,7 @@
                     mapState.layers.push(l)
                 } else if (layer instanceof L.FeatureGroup) {
                     l.type = 'FeatureGroup'
-                    l.url = layer.url
+                    l.layers = []
                     l.options = layer.options
                     mapState.layers.push(l)
                 }

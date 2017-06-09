@@ -28,14 +28,34 @@
         <script src="https://unpkg.com/leaflet-easybutton@2.0.0/src/easy-button.js"></script>
         <script src="../index.js"></script>
         <script>
-            var map = L.map('map').setView([0, 0], 2)
+            var map = L.map('map').setView([51.512588580360244, -0.10351181030273439], 12)
             L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 maxZoom: 18,
                 attribution: 'Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'}).addTo(map)
             L.easyButton('fa-floppy-o', function () {
             var state = map.save();
-            document.getElementById('state').innerHTML = JSON.stringify(state, null, '\t')
+            document.getElementById('state').innerHTML = JSON.stringify(state, null, '\t')}).addTo(map);
+            L.tileLayer.wms("http://mesonet.agron.iastate.edu/cgi-bin/wms/nexrad/n0r.cgi", {
+                layers: 'nexrad-n0r-900913',
+                format: 'image/png',
+                transparent: true,
+                attribution: "Weather data © 2012 IEM Nexrad"
             }).addTo(map);
-      </script>
+            var marker = L.marker([51.5, -0.09])
+            var circle = L.circle([51.508, -0.11], {
+                color: 'red',
+                fillColor: '#f03',
+                fillOpacity: 0.5,
+                radius: 500
+            })
+            var polygon = L.polygon([
+                [51.509, -0.08],
+                [51.503, -0.06],
+                [51.51, -0.047]
+            ])
+            L.featureGroup([marker, circle, polygon])
+                .bindPopup('Hello world!')
+                .on('click', function() { alert('Clicked on a member of the group!'); }).addTo(map);
+        </script>
     </body>
-  </html>
+</html>
