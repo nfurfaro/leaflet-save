@@ -26,15 +26,16 @@
         integrity="sha512-A7vV8IFfih/D732iSSKi20u/ooOfj/AGehOKq0f4vLT1Zr2Y+RX7C+w8A1gaSasGtRUZpF/NZgzSAu4/Gc41Lg=="
         crossorigin=""></script>
         <script src="https://unpkg.com/leaflet-easybutton@2.0.0/src/easy-button.js"></script>
-        <!-- <script src="../index.js"></script> -->
+        <script src="../index.js"></script>
         <script>
         var map = L.map('map').setView([0, 0], 2)
         L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
           maxZoom: 18,
           attribution: 'Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'}).addTo(map)
-        L.easyButton('fa-floppy-o', function () { map.save()}).addTo(map);
-        var state = map.save();
-        document.getElementById('state').innerHTML = JSON.stringify(state, null, '\t')
+        L.easyButton('fa-floppy-o', function () {
+            var state = map.save();
+            document.getElementById('state').innerHTML = JSON.stringify(state, null, '\t')
+        }).addTo(map);
       </script>
     </body>
   </html>
