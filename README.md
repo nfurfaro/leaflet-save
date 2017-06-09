@@ -2,8 +2,6 @@
 A leaflet plugin that provides a hook to save the map state as JSON.
 
 
-[] start by implementing save button, and output state to display box.
-
 
 ```js
 map.save(function (mapState) {
@@ -28,7 +26,7 @@ map.save(function (mapState) {
             "type": "TileLayer|TileLayer.WMS|FeatureGroup",
             "url": "http://...",
             "options": {},
-            "basemap": "true|false"
+            <!-- "basemap": "true|false" -->
         }
     ]
 }
@@ -46,7 +44,7 @@ map.eachLayer(function (layer) {
         l.type = 'TileLayer';
         l.url = layer.url;
         l.options = layer.options;
-        layer.push(l);
+        layers.push(l);
     }
 });
 
