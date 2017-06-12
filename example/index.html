@@ -41,21 +41,6 @@
                 transparent: true,
                 attribution: "Weather data © 2012 IEM Nexrad"
             }).addTo(map);
-            var marker = L.marker([51.5, -0.09])
-            var circle = L.circle([51.508, -0.11], {
-                color: 'red',
-                fillColor: '#f03',
-                fillOpacity: 0.5,
-                radius: 500
-            })
-            var polygon = L.polygon([
-                [51.509, -0.08],
-                [51.503, -0.06],
-                [51.51, -0.047]
-            ])
-            L.featureGroup([marker, circle, polygon])
-                .bindPopup('Hello world!')
-                .on('click', function() { alert('Clicked on a member of the group!'); }).addTo(map);
         </script>
     </body>
 </html>
