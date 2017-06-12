@@ -15,19 +15,19 @@ A leaflet plugin that provides a hook to save the map state as JSON.
 
 ```json
 {
-    "zoom": 2,
+    "zoom": 12,
     "center": [
-        0,
-        0
+        51.512588580360244,
+        -0.10351181030273439
     ],
     "bounds": [
         [
-            84.33698037639608,
-            -114.25781250000001
+            51.61396614657711,
+            -0.20565032958984375
         ],
         [
-            -84.33698037639608,
-            114.60937500000001
+            51.41098490443605,
+            -0.0010299682617187502
         ]
     ],
     "layers": [
@@ -41,6 +41,15 @@ A leaflet plugin that provides a hook to save the map state as JSON.
                     "b",
                     "c"
                 ]
+            }
+        },
+        {
+            "type": "TileLayer.wms",
+            "options": {
+                "layers": "nexrad-n0r-900913",
+                "format": "image/png",
+                "transparent": true,
+                "attribution": "Weather data © 2012 IEM Nexrad"
             }
         }
     ]
