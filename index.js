@@ -20,29 +20,42 @@
             var mapState = {
               zoom: this.getZoom(),
               center: [center.lat, center.lng],
-              bounds: [
-                [bounds.getNorth(), bounds.getWest()],
-                [bounds.getSouth(), bounds.getEast()]
-              ],
-              layers: []
+              // bounds: [
+              //   [bounds.getNorth(), bounds.getWest()], // Why this way?
+              //   [bounds.getSouth(), bounds.getEast()]
+              // ],
+              bounds: {
+                North: bounds.getNorth(),
+                West: bounds.getWest(),
+                South: bounds.getSouth(),
+                East: bounds.getEast()
+              },
+              layers: [],
+              features: []
             };
-            this.eachLayer(function (layer) {  //this or map or L.map?
+            this.eachLayer(function (layer) {
                 var l = {}
+                var features = {}
                 if (layer instanceof L.TileLayer.WMS) {
                     l.type = 'TileLayer.wms'
+                    l._leaflet_id = layer._leaflet_id
                     l.url = layer.url
                     l.options = layer.options
                     mapState.layers.push(l)
                 } else if (layer instanceof L.TileLayer) {
                     l.type = 'TileLayer'
+                    l._leaflet_id = layer._leaflet_id
                     l.url = layer.url
                     l.options = layer.options
                     mapState.layers.push(l)
                 } else if (layer instanceof L.FeatureGroup) {
+                    console.log(layer.toGeoJSON())
+                    var featureCollection = layer.toGeoJSON()
                     l.type = 'FeatureGroup'
-                    l.options = layer.options
-                    l.fatures = layer.options.layers
+                    l._leaflet_id = layer._leaflet_id
                     mapState.layers.push(l)
+                    // mapState.features._leaflet_id.push(l._leaflet_id)
+                    mapState.features.push(featureCollection)
                 }
             })
 
@@ -52,3 +65,6 @@
 
     L.Map.include(SaveMapMixin);
 }));
+
+
+// check out "invoke", and "onEachFeature"
